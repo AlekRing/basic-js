@@ -1,25 +1,52 @@
 const CustomError = require("../extensions/custom-error");
 
 const chainMaker = {
+  arr: [],
+  itr: 0,
+  temp: '',
+  tempArr: [],
   getLength() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    return this.arr.length
   },
-  addLink(value) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+  addLink(tostr) {
+    this.arr[this.itr] = '( ' + tostr + ' )'
+    this.itr++
+
+    return this
   },
   removeLink(position) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    if (position <= 0 || typeof(position) !== 'number' || position > this.itr) {
+      this.arr = []
+      this.itr = 0
+      return new error('THROWN')
+    }
+    for (let i = position - 1; i < this.arr.length ; i++) {
+      this.arr[i] = this.arr[i + 1]
+    }
+    this.arr.pop()
+    this.itr--
+    return this
   },
   reverseChain() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    if (this.arr.length === 2) {
+      this.temp = this.arr[1]
+      this.arr[1] = this.arr[0]
+      this.arr[0] = this.temp
+      return this
+    }
+    if (this.itr !== 1 && this.itr !== 0) {
+    this.temp = this.arr[this.itr - 2]
+    this.arr[this.itr - 2] = this.arr[this.itr - 1]
+    this.arr[this.itr - 1] = this.temp
+    return this
+    }
+    return this
   },
   finishChain() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    this.tempArr = this.arr.join('~~')
+    this.arr = []
+    this.itr = 0
+    return this.tempArr
   }
 };
 
