@@ -28,14 +28,7 @@ const chainMaker = {
     return this
   },
   reverseChain() {
-    if (this.arr.length === 2) {
-      this.temp = this.arr[1]
-      this.arr[1] = this.arr[0]
-      this.arr[0] = this.temp
-      return this
-    } else {
-      this.arr = this.arr.reverse()
-    }
+    this.arr = this.arr.reverse()
     return this
   },
   finishChain() {
