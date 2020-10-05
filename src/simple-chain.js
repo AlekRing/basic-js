@@ -33,12 +33,8 @@ const chainMaker = {
       this.arr[1] = this.arr[0]
       this.arr[0] = this.temp
       return this
-    }
-    if (this.itr !== 1 && this.itr !== 0) {
-    this.temp = this.arr[this.itr - 2]
-    this.arr[this.itr - 2] = this.arr[this.itr - 1]
-    this.arr[this.itr - 1] = this.temp
-    return this
+    } else {
+      this.arr = this.arr.reverse()
     }
     return this
   },
